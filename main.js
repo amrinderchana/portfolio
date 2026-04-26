@@ -161,8 +161,60 @@ const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+  let minDistance = Infinity;
+  
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const distance = Math.abs(rect.top);
+    
+    // If section is in viewport or closest to top
+    if ((rect.top <= 200 && rect.bottom >= 200) || distance < minDistance) {
+      minDistance = distance;
+      current = section.id;
+    }
+  });
+  
+  // Ensure contact stays active when scrolled to bottom
+  const scrollBottom = window.innerHeight + window.scrollY;
+  const docHeight = document.documentElement.scrollHeight;
+  if (scrollBottom >= docHeight - 50) {
+    current = 'contact';
+  }
+  
   navLinks.forEach(a => {
     a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
   });
+});
+
+// ─── DYNAMIC YEARS ───────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const startDate = new Date('2016-04-01');
+  const currentDate = new Date();
+  const years = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 365.25));
+
+  // Update hero experience
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) {
+    heroSub.textContent = heroSub.textContent.replace('8+ years', `${years}+ years`);
+  }
+
+  // Update hero stats
+  const statNum = document.querySelector('.stat-num');
+  if (statNum && statNum.textContent === '8+') {
+    statNum.textContent = `${years}+`;
+  }
+
+  // Update about experience
+  const aboutParas = document.querySelectorAll('#about p');
+  aboutParas.forEach(p => {
+    if (p.textContent.includes('8+ years')) {
+      p.innerHTML = p.innerHTML.replace('8+ years', `${years}+ years`);
+    }
+  });
+
+  // Update footer year
+  const footerP = document.querySelector('footer p');
+  if (footerP && footerP.textContent.includes('© 2026')) {
+    footerP.textContent = footerP.textContent.replace('© 2026', `© ${currentDate.getFullYear()}`);
+  }
 });
