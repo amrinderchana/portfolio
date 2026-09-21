@@ -62,7 +62,7 @@
   } catch (e) {}
 })();
 </script>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
 
@@ -105,6 +105,34 @@
         LinkedIn
       </a>
     </div>
+  </div>
+
+  <div class="hero-terminal reveal" aria-hidden="true">
+    <div class="terminal-bar">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="terminal-title">amrinder@portfolio ~ %</span>
+    </div>
+    <div class="terminal-body">
+      <div class="terminal-cmd active">
+        <div class="line"><span class="prompt">$</span><span class="type" style="--chars:6">whoami</span></div>
+        <div class="out">amrinder-singh</div>
+      </div>
+      <div class="terminal-cmd">
+        <div class="line"><span class="prompt">$</span><span class="type" style="--chars:12">cat role.txt</span></div>
+        <div class="out">Technical Specialist · Ruby on Rails</div>
+      </div>
+      <div class="terminal-cmd">
+        <div class="line"><span class="prompt">$</span><span class="type" style="--chars:10">ls skills/</span></div>
+        <div class="out">rails&nbsp;&nbsp;react&nbsp;&nbsp;postgres&nbsp;&nbsp;aws&nbsp;&nbsp;docker&nbsp;&nbsp;k8s</div>
+      </div>
+      <div class="terminal-cmd">
+        <div class="line"><span class="prompt">$</span><span class="type" style="--chars:14">cat status.txt</span></div>
+        <div class="out">open to freelance &amp; consulting work</div>
+      </div>
+    </div>
+    <button type="button" class="terminal-next" id="terminal-next" tabindex="-1">Next command →</button>
   </div>
 </section>
 
@@ -411,6 +439,6 @@
   <p>Designed & developed by AS</p>
 </footer>
 
-<script src="main.js"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

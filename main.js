@@ -20,6 +20,19 @@
   });
 })();
 
+// ─── HERO TERMINAL (cycle command blocks, CSS handles the typewriter) ─────
+(function () {
+  const cmds = document.querySelectorAll('.terminal-cmd');
+  const nextBtn = document.getElementById('terminal-next');
+  if (!cmds.length || !nextBtn) return;
+
+  let index = 0;
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % cmds.length;
+    cmds.forEach((el, i) => el.classList.toggle('active', i === index));
+  });
+})();
+
 // ─── SCROLL REVEAL (IntersectionObserver, transform/opacity only) ─────────
 (function () {
   const targets = document.querySelectorAll('.reveal');
