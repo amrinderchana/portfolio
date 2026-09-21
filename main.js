@@ -67,13 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startDate = new Date('2016-04-01');
   const years = Math.floor((Date.now() - startDate) / (1000 * 60 * 60 * 24 * 365.25));
 
-  const heroSub = document.querySelector('.hero-sub');
-  if (heroSub) heroSub.textContent = heroSub.textContent.replace('8+ years', `${years}+ years`);
-
-  const statNum = document.querySelector('.stat-num');
-  if (statNum && statNum.textContent === '8+') statNum.textContent = `${years}+`;
-
-  document.querySelectorAll('#about p').forEach(p => {
+  document.querySelectorAll('.hero-sub, #about p').forEach(p => {
     if (p.textContent.includes('8+ years')) {
       p.innerHTML = p.innerHTML.replace('8+ years', `${years}+ years`);
     }
