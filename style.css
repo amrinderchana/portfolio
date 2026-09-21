@@ -164,9 +164,11 @@ nav {
   padding: 9rem 3rem 6rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .hero-content {
   position: relative;
+  width: 100%;
   max-width: 640px;
 }
 .hero-avatar {
